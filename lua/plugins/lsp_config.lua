@@ -29,6 +29,14 @@ return {
                 },
             })
 
+            -- rust lsp
+            vim.lsp.config("rust_analyzer", {
+                settings = {
+                    capabilities = capabilities,
+                    ["rust_analyzer"] = {},
+                }
+            })
+
             vim.lsp.enable("lus_ls")
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
@@ -38,5 +46,26 @@ return {
             vim.diagnostic.config({virtual_text = true})
         end
     },
+    -- Rust specific
+    {
+        "mrcjkb/rustaceanvim",
+        version = "^6",
+        lazy = false,
+
+        config = function()
+            vim.g.rustaceanvim = {
+                server = {
+                    on_attach = function(client, bufnr)
+                        -- keymaps
+                    end,
+                    
+                    default_settings = {
+                        ["rust-analyzer"] = {},
+                        capabilities = capabilities,
+                    },
+                },
+            }
+        end
+    }
 }
 

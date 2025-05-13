@@ -19,7 +19,7 @@ return {
             cmp.setup({
                 snippet = {
                     expand = function(args)
-                        required("luasnip").lsp_expand(args.body)
+                        require("luasnip").lsp_expand(args.body)
                     end,
                 },
             Window = {
