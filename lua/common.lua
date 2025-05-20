@@ -10,3 +10,9 @@ vim.opt.number = true
 -- Leader
 vim.g.mapleader = " "
 
+-- Virtual text information
+vim.api.nvim_create_autocmd("CursorHold", {
+    callback = function()
+        vim.diagnostic.open_float(nil, { focusable = false, source = "if_many" })
+    end
+})
